@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { TileLayer, Marker, MapContainer } from "react-leaflet";
+import { TileLayer, Marker, MapContainer, ZoomControl } from "react-leaflet";
 import markerIcon from "./components/MarkerIcon";
 import "./MapSection.scss";
-
 
 export default function MapSection({ lat, lng }) {
   let mapRef = useRef(null);
@@ -12,7 +11,6 @@ export default function MapSection({ lat, lng }) {
       mapRef.current.setView([lat, lng]);
     }
   }, [lat]); //change api when api is called
-
   return (
     <>
       {lat != null && (
@@ -28,6 +26,7 @@ export default function MapSection({ lat, lng }) {
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
           <Marker icon={markerIcon} position={[lat, lng]}></Marker>
+          <ZoomControl position="bottomleft" />
         </MapContainer>
       )}
     </>

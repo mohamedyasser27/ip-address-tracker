@@ -4,8 +4,8 @@ import shadowpng from "../assets/marker-shadow.png";
 const markerIcon = L.icon({
   iconUrl: markerpng,
   shadowUrl: shadowpng,
-  iconSize: [24, 36],
-  iconAnchor: [12, 36],
-  shadowAnchor: [12, 36],
+  iconSize: [25, 41],
+  iconAnchor: [12.5, 41],
+  shadowAnchor: [11, 41],
 });
 export default markerIcon;
