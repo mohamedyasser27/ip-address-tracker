@@ -9,11 +9,11 @@ export default function LocationSelector({ setCurrentLocationData }) {
   }
 
   function CallApi() {
-    axios(`http://localhost:3002?requestedSiteUrl=${ipInput}`).then(
-      ({ data }) => {
-        setCurrentLocationData(data);
-      }
-    );
+    axios(
+      `https://ip-address-tracker-backed.onrender.com?requestedSiteUrl=${ipInput}`
+    ).then(({ data }) => {
+      setCurrentLocationData(data);
+    });
   }
 
   function onSubmit(e) {
