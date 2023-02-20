@@ -1,0 +1,33 @@
+@use "./vendors/vendor-dir" as *;
+@use "./base/base-dir" as *;
+// * {
+//   outline: solid 3px purple;
+// }
+body {
+  background-color: $White;
+  font: {
+    family: "Rubik", sans-serif;
+    weight: 400;
+  }
+}
+
+input {
+  font-size: 18px;
+}
+
+main {
+  @include flexer(column);
+}
+
+.background-img {
+  @include size(100%, 250px);
+  object-fit: cover; //image to crop if it doesn't fill
+}
+
+.absolute-container {
+  @include positioner(absolute, $top: 20px, $left: 50%, $z-index: 999);
+  @include widther(1100px);
+  @include flexer(column);
+  translate: -50%;
+  min-width: 0;
+}

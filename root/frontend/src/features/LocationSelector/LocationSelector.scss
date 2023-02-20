@@ -1,0 +1,46 @@
+.location-selector {
+  color: white;
+
+  margin-inline: 25px;
+  .submit-btn {
+    $border-radius: 15px;
+    border: none;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    background-color: $Very_Dark_Gray;
+    padding: 20px;
+    transition: background-color 125ms ease-out;
+    &:hover {
+      background-color: $Very_Dark_Gray_hover;
+      cursor: pointer;
+    }
+  }
+
+  @include element("header") {
+    font: {
+      size: clamp(1.7rem, 1.5154rem + 0.9231vw, 2rem);
+      weight: 500;
+    }
+    text-align: center;
+  }
+  @include element("form") {
+    @include widther(550px);
+    display: flex;
+    margin-block: 50px;
+    margin-inline: auto;
+  }
+
+  #ip-input {
+    $border-radius: 15px;
+    border: none;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    padding: 20px 25px;
+    flex-grow: 100;
+    min-width: 0px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
