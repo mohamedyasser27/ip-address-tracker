@@ -19,7 +19,7 @@ export default function LocationSelector({ setCurrentLocationData }) {
     return requestURL;
   }
 
-  async function CallApi() {
+  async function getLocationData() {
     const requestURL = await checkInputEmptiness(ipInput);
     const { data } = await axios(
       `https://ip-address-tracker-backed.onrender.com/geolocation?requestedSiteUrl=${requestURL}`
@@ -29,11 +29,11 @@ export default function LocationSelector({ setCurrentLocationData }) {
 
   function onSubmit(e) {
     e.preventDefault();
-    CallApi();
+    getLocationData();
   }
 
   useEffect(() => {
-    CallApi();
+    getLocationData();//load current location data on the first load
   }, []);
 
   return (
