@@ -1,14 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { TileLayer, Marker, MapContainer } from "react-leaflet";
-import { fixLeafletIcons } from "@src/fixLeafletIcons";
+import markerIcon from "./components/MarkerIcon";
 import "./MapSection.scss";
+
 
 export default function MapSection({ lat, lng }) {
   let mapRef = useRef(null);
-
-  useEffect(() => {
-    fixLeafletIcons();//common fix for leaflet icon problems,reproduce by removal
-  }, []);
 
   useEffect(() => {
     if (mapRef.current != null) {
@@ -18,7 +15,7 @@ export default function MapSection({ lat, lng }) {
 
   return (
     <>
-      {lat!=null && (
+      {lat != null && (
         <MapContainer
           ref={mapRef}
           id="map"
@@ -30,7 +27,7 @@ export default function MapSection({ lat, lng }) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
-          <Marker position={[lat, lng]}></Marker>
+          <Marker icon={markerIcon} position={[lat, lng]}></Marker>
         </MapContainer>
       )}
     </>
