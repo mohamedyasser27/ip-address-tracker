@@ -9,7 +9,7 @@ export default function LocationSelector({ setCurrentLocationData }) {
   }
 
   function CallApi() {
-    axios(`http://localhost:3002/geo?requestedSiteUrl=${ipInput}`).then(
+    axios(`http://localhost:3002?requestedSiteUrl=${ipInput}`).then(
       ({ data }) => {
         setCurrentLocationData(data);
       }

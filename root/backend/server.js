@@ -1,40 +1,35 @@
-const express = require("express"); //framework for node
-const app = express();
 const axios = require("axios"); //api calls
+const express = require("express"); //framework for node
 const cors = require("cors"); //allow cross domain communication
-require("dotenv").config(); //import env variables
-
+const app = express();
 app.use(
   cors({
-    origin: "*",
-  }) //allow cors from this domain
+    origin: "*", //allow cors from any domain
+  })
 );
-
-function handleResponse(data, res) {
-  res.send(location);
-}
-
+app.listen(3002);
 function formulateRequestUrl(requestedSiteUrl) {
-  
-  const isIp = Number(requestedSiteUrl.split(".").join(""));
+  const isIp = Number(requestedSiteUrl.split(".").join("")); //check if the requested url is ip or domain
   const siteTypeStr = isNaN(isIp) ? "domain" : "ipAddress";
-  return "http://localhost:3000/" + (requestedSiteUrl || "empty");
-  // return `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY}&${siteTypeStr}=${requestedSiteUrl}`;
+  return `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY}&${siteTypeStr}=${requestedSiteUrl}`;
 }
-app.get("/geo", async (req, res) => {
-  const { requestedSiteUrl } = req.query;
-  let requestUrl = formulateRequestUrl(requestedSiteUrl);
-  const { data } = await axios(requestUrl);
-  const { isp, location, ip } = data;
-  res.send({ location, isp, ip });
-});
-app.listen(process.env.PORT_NUM);
 
-/**
- * TODO:error handling if backend fails
-  .catch((error) => {
-  const { code: statusCode } = error.response.data;
-  return statusCode;
-  });
-    res.sendStatus(data);
- */
+function callApi(url, res) {
+  axios(url)
+    .then(({ data }) => {
+      const { isp, location, ip } = data;
+      res.send({ location, isp, ip });
+    })
+    .catch((error) => {
+      const { code: statusCode } = error.response.data;
+      console.log("catch error:",error.response);
+      res.sendStatus(statusCode);
+    });
+}
+
+app.get("/", (req, res) => {
+  console.log("env file", process.env);
+  const { requestedSiteUrl } = req.query;
+  let url = formulateRequestUrl(requestedSiteUrl);
+  callApi(url, res);
+});
