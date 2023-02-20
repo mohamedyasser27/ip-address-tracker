@@ -8,17 +8,6 @@ app.use(
   })
 );
 
-
-async function checkInputEmptiness(requestURL) {
-  if (requestURL == "") {
-    const { data } = await axios(
-      `https://api.ipdata.co/?api-key=${process.env.IP_API_KEY}`
-    );
-    return data.ip;
-  }
-  return requestURL;
-}
-
 function formulateRequestUrl(requestedSiteUrl) {
   const isIp = Number(requestedSiteUrl.split(".").join("")); //check if the requested url is ip or domain
   const siteTypeStr = isNaN(isIp) ? "domain" : "ipAddress";
@@ -39,7 +28,6 @@ function callGeoApi(url, res) {
 
 app.get("/geolocation",async (req, res) => {
   let { requestedSiteUrl } = req.query;
-  requestedSiteUrl =await checkInputEmptiness(requestedSiteUrl);
   let url = formulateRequestUrl(requestedSiteUrl);
   callGeoApi(url, res);
 });
