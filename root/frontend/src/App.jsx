@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <main>
-      <img className="background-img" src={backgroundImg} />
+      <img className="background-img" src={backgroundImg} alt="background img" />
       <MapSection lat={lat} lng={lng} />
 
       <div className="absolute-container">

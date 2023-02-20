@@ -49,8 +49,8 @@ export default function LocationSelector({ setCurrentLocationData }) {
           autoComplete="off"
           placeholder="Search for any IP address or domain..."
         />
-        <button className="submit-btn">
-          <img src={arrowImg} />
+        <button className="submit-btn" aria-label="submit button">
+          <img src={arrowImg} alt="" />
         </button>
       </form>
     </div>

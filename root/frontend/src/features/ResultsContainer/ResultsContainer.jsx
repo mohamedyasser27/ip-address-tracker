@@ -9,7 +9,6 @@ export default function ResultsContainer({ location }) {
   const isBigScreen = useMediaQuery({ query: "(min-width: 730px)" });
 
   if (isBigScreen && !resultsClosed) {
-    console.log(1);
         setResultsClosed(true);
   }
   function loadResults() {
@@ -32,7 +31,12 @@ export default function ResultsContainer({ location }) {
 
   return (
     <section className={`results-container`}>
-      <button className="close-results-btn" onClick={toggleMenu}>
+      <h1 className="results-container__header">Results</h1>
+      <button
+        className="close-results-btn"
+        onClick={toggleMenu}
+        aria-label="minimize results"
+      >
         <img src={downArrow} alt="" />
       </button>
       {resultsClosed && <div className={`results-list`}>{results}</div>}
