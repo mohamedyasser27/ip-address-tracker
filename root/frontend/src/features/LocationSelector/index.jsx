@@ -8,12 +8,23 @@ export default function LocationSelector({ setCurrentLocationData }) {
     setIpInput(e.target.value);
   }
 
-  function CallApi() {
-    axios(
-      `https://ip-address-tracker-backed.onrender.com?requestedSiteUrl=${ipInput}`
-    ).then(({ data }) => {
-      setCurrentLocationData(data);
-    });
+  async function checkInputEmptiness(requestURL) {
+    if (requestURL == "") {
+      
+      const { data } = await axios(
+        "https://api.ipdata.co/?api-key=8d80c879d68d26478f385c862e5e1d332821a8ef583ceb24b48c6b42"
+      );
+      return data.ip;
+    }
+    return requestURL;
+  }
+
+  async function CallApi() {
+    const requestURL = await checkInputEmptiness(ipInput);
+    const { data } = await axios(
+      `https://ip-address-tracker-backed.onrender.com/geolocation?requestedSiteUrl=${requestURL}`
+    );
+    setCurrentLocationData(data);
   }
 
   function onSubmit(e) {
@@ -22,13 +33,13 @@ export default function LocationSelector({ setCurrentLocationData }) {
   }
 
   useEffect(() => {
-      CallApi()
+    CallApi();
   }, []);
 
   return (
     <div className="location-selector">
       <p className="location-selector__header">IP Address Tracker</p>
-      <form className="location-selector__form"  onSubmit={onSubmit}>
+      <form className="location-selector__form" onSubmit={onSubmit}>
         <input
           id="ip-input"
           type="text"

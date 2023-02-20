@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repo](https://github.com/mohamedyasser27/ip-address-tracker)
+- Live Site URL: [site](https://ip-address-tracker-my.netlify.app/)
 
 ## My process
 
@@ -62,7 +62,8 @@ Users should be able to:
 - usage of ref to get properies of Component and use them on the same instance
 - use useMemo to cache the results value so that it doesn't render again if i ask same api
 - use express to build backend service
-<!-- 
+<!--
+
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.

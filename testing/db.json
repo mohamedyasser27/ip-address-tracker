@@ -1,0 +1,118 @@
+{
+  "reddit.com": {
+    "id": 2,
+    "ip": "151.101.193.140",
+    "location": {
+      "country": "US",
+      "region": "California",
+      "city": "San Francisco",
+      "lat": 37.77493,
+      "lng": -122.41942,
+      "postalCode": "94102",
+      "timezone": "-08:00",
+      "geonameId": 5391959
+    },
+    "domains": [
+      "redd.it",
+      "reddit.com",
+      "redditinc.com",
+      "ads.reddit.com",
+      "redditblog.com"
+    ],
+    "as": {
+      "asn": 54113,
+      "name": "FASTLY",
+      "route": "151.101.192.0/22",
+      "domain": "https://www.fastly.com",
+      "type": "Content"
+    },
+    "isp": "Fastly, Inc."
+  },
+  "google.com": {
+    "id": 3,
+    "ip": "142.250.189.14",
+    "location": {
+      "country": "US",
+      "region": "California",
+      "city": "Los Angeles",
+      "lat": 34.05223,
+      "lng": -118.24368,
+      "postalCode": "90001",
+      "timezone": "-08:00",
+      "geonameId": 5368361
+    },
+    "domains": [
+      "sb.l.google.com",
+      "0m66lx69dx.com",
+      "23ig4j2yzb.com",
+      "3d6y5bf67x.com",
+      "9ipcnvyuqq.com"
+    ],
+    "as": {
+      "asn": 15169,
+      "name": "GOOGLE",
+      "route": "142.250.189.0/24",
+      "domain": "https://about.google/intl/en/",
+      "type": "Content"
+    },
+    "isp": "Google LLC"
+  },
+  "github.com": {
+    "id": 4,
+    "ip": "192.30.255.113",
+    "location": {
+      "country": "US",
+      "region": "Washington",
+      "city": "Seattle",
+      "lat": 47.60621,
+      "lng": -122.33207,
+      "postalCode": "98101",
+      "timezone": "-08:00",
+      "geonameId": 5809844
+    },
+    "domains": [
+      "lb-192-30-255-113-sea.github.com",
+      "17win.xyz",
+      "thefinder.cn",
+      "ixiaoyu.org",
+      "octocaptcha.com"
+    ],
+    "as": {
+      "asn": 36459,
+      "name": "GITHUB",
+      "route": "192.30.255.0/24",
+      "domain": "https://github.com/",
+      "type": "Content"
+    },
+    "isp": "GitHub, Inc."
+  },
+  "empty": {
+    "id": 5,
+    "ip": "172.66.40.226",
+    "location": {
+      "country": "US",
+      "region": "California",
+      "city": "South Beach",
+      "lat": 37.78298,
+      "lng": -122.38969,
+      "postalCode": "",
+      "timezone": "-08:00",
+      "geonameId": 5326621
+    },
+    "domains": [
+      "5gringos4.com",
+      "ads.alpha-it.nl",
+      "api.zigpoll.com",
+      "appbackend.altex.com",
+      "assistant.alpha-it.nl"
+    ],
+    "as": {
+      "asn": 13335,
+      "name": "CLOUDFLARENET",
+      "route": "172.66.40.0/21",
+      "domain": "https://www.cloudflare.com",
+      "type": "Content"
+    },
+    "isp": "Cloudflare, Inc."
+  }
+}
