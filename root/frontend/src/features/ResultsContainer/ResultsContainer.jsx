@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import ReactLoading from "react-loading";
 import ResultElement from "./components/ResultElement/ResultElement";
 import downArrow from "@assets/images/down-arrow.svg";
 import "./ResultsContainer.scss";
-export default function ResultsContainer({ location }) {
+export default function ResultsContainer({ location, isLoadingResults }) {
   const [resultsClosed, setResultsClosed] = useState(true);
   const results = loadResults();
   const isBigScreen = useMediaQuery({ query: "(min-width: 730px)" });
 
   if (isBigScreen && !resultsClosed) {
-        setResultsClosed(true);
+    setResultsClosed(true);
   }
   function loadResults() {
     const list = [];
@@ -39,7 +40,17 @@ export default function ResultsContainer({ location }) {
       >
         <img src={downArrow} alt="" />
       </button>
-      {resultsClosed && <div className={`results-list`}>{results}</div>}
+      {isLoadingResults ? (
+        <ReactLoading
+          className="loading-element"
+          type={"spin"}
+          color={"#3f3f3f"}
+          height={50}
+          width={50}
+        />
+      ) : (
+        resultsClosed && <div className={`results-list`}>{results}</div>
+      )}
     </section>
   );
 }

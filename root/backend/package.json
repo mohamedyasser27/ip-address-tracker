@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "npx nodemon server.js",
+    "dev": "npx nodemon --port 3003 server.js",
     "test": "json-server --watch db.json"
   },
   "dependencies": {

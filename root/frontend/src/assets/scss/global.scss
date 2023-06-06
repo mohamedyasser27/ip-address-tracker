@@ -3,6 +3,15 @@
 // * {
 //   outline: solid 3px purple;
 // }
+@include font-face(
+  "Rubik",
+  "/src/assets/fonts/Rubik-VariableFont_wght.woff2",
+  normal,
+  400,
+  500,
+  700
+);
+
 body {
   background-color: $White;
   font: {

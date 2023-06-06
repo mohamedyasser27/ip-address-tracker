@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import arrowImg from "@assets/images/icon-arrow.svg";
 import "./LocationSelector.scss";
-export default function LocationSelector({ setCurrentLocationData }) {
+export default function LocationSelector({
+  setCurrentLocationData,
+  setIsLoadingResults,
+}) {
   const [ipInput, setIpInput] = useState("");
   function onChange(e) {
     setIpInput(e.target.value);
@@ -10,7 +13,6 @@ export default function LocationSelector({ setCurrentLocationData }) {
 
   async function checkInputEmptiness(requestURL) {
     if (requestURL == "") {
-      
       const { data } = await axios(
         "https://api.ipdata.co/?api-key=8d80c879d68d26478f385c862e5e1d332821a8ef583ceb24b48c6b42"
       );
@@ -33,7 +35,13 @@ export default function LocationSelector({ setCurrentLocationData }) {
   }
 
   useEffect(() => {
-    getLocationData();//load current location data on the first load
+    async function fetchData() {
+      setIsLoadingResults(true);
+      await getLocationData(); //load current location data on the first load
+      setIsLoadingResults(false);
+
+    }
+    fetchData();
   }, []);
 
   return (

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import backgroundImg from "@assets/images/pattern-bg.png";
 import LocationSelector from "@features/LocationSelector/";
 import ResultsContainer from "./features/ResultsContainer/ResultsContainer";
@@ -20,14 +19,25 @@ export default function App() {
     } = {}, // we can't destructure undefined so i gave it a default
   } = currentLocationData;
 
+  const [isLoadingResults, setIsLoadingResults] = useState(false);
+
+
   return (
     <main>
-      <img className="background-img" src={backgroundImg} alt="background img" />
+      <img
+        className="background-img"
+        src={backgroundImg}
+        alt="background img"
+      />
       <MapSection lat={lat} lng={lng} />
 
       <div className="absolute-container">
-        <LocationSelector setCurrentLocationData={setCurrentLocationData} />
+        <LocationSelector
+          setIsLoadingResults={setIsLoadingResults}
+          setCurrentLocationData={setCurrentLocationData}
+        />
         <ResultsContainer
+          isLoadingResults={isLoadingResults}
           location={{
             "ip Address": ip,
             location: city == null ? null : `${city},${country}`, //to pass null instead of "null,null"
